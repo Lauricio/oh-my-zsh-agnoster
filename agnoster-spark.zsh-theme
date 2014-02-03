@@ -90,7 +90,8 @@ prompt_git() {
     zstyle ':vcs_info:*' formats ' %u%c'
     zstyle ':vcs_info:*' actionformats '%u%c'
     vcs_info
-    echo -n "${ref/refs\/heads\//± }${vcs_info_msg_0_}"
+ # echo -n "${ref/refs\/heads\//⭠ }$dirty" # remy sharp indicator (for future reference)
+    echo -n "${ref/refs\/heads\//⭠ }${vcs_info_msg_0_}"
   fi
 }
 
@@ -162,8 +163,8 @@ build_prompt() {
   prompt_status
   prompt_virtualenv
   # prompt_context # removed the user and computer information
-  prompt_dir
   prompt_git
+  prompt_dir  # can be switch positions with "prompt_git" to move it to the front of the terminal
   prompt_hg
   prompt_end
 }
